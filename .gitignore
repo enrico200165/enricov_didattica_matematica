@@ -1,0 +1,111 @@
+
+005*/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- Ambienti virtuali ---
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.conda/
+conda-meta/
+
+# --- Test, coverage, type checking ---
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+
+# --- Jupyter / IPython ---
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+*.nbconvert.ipynb
+
+# --- Matematica: SageMath, sympy, calcoli numerici ---
+*.sage.py
+*.spyderproject
+.spyproject/
+*.log
+
+# --- LaTeX (report, dispense, appunti generati da notebook) ---
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.out
+*.synctex.gz
+*.toc
+*.run.xml
+*.nav
+*.snm
+*.vrb
+
+# --- Dati e output generati (adatta secondo necessità) ---
+*.csv
+*.tsv
+*.h5
+*.hdf5
+*.parquet
+*.pkl
+*.pickle
+data/raw/
+data/processed/
+output/
+outputs/
+results/
+
+# --- IDE / editor ---
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# --- Sistema operativo ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Altri strumenti comuni ---
+.ipynb_checkpoints
+.streamlit/
+.cache/
+*.log
+.env
+.env.*
