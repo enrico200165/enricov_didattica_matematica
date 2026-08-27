@@ -28,10 +28,16 @@ Attività e approfondimenti:
 3. Operazioni: T: 83 - E: 106 - Cmp: Addizioni, sottrazioni, moltiplicazioni e divisioni in Q p. 110 - Cmp: Potenze e loro proprietà in Q p. 115 - Riepilogo: Numeri razionali p. 116
 4. Numeri decimali: T: 87 - E: 119 - Cmp: Numeri decimali p. 122
 5. Proporzioni e percentuali: T: 90 - E: 123 - Cmp: Proporzioni e percentuali p. 133
-6. Numeri reali: T: 93 - E: 134
+6. Numeri reali: T: 93 - E: 134  
 7. Approssimazioni e notazione scientifica: T: 94 - E: 135 - Cmp: Numeri reali, approssimazione, notazione scientifica p. 138  
-- Teoria in sintesi: T: 97
-Attività e approfondimenti: Coding con Python: Calcola le percentuali p. 96 - Matematica per l'agenda 2030: La classe energetica di un'abitazione p. 120 - Matematica per l'educazione finanziaria: Viaggi nel mondo: il tasso di cambio p. 130 - Matematica per le STEM: Molto grande e molto piccolo a confronto p. 139 - Competenze alla prova p. 140 - Accetti la sfida? p. 145 - Prova di verifica p. 146
+- Teoria in sintesi: T: 97  
+Attività e approfondimenti:  
+- Coding con Python: Calcola le percentuali p. 96  
+- Matematica per l'agenda 2030: La classe energetica di un'abitazione p. 120  
+- Matematica per l'educazione finanziaria: Viaggi nel mondo: il tasso di cambio p. 130  
+- Matematica per le STEM: Molto grande e molto piccolo a confronto p. 139  
+- Competenze alla prova p. 140 - Accetti la sfida? p. 145  
+- Prova di verifica p. 146
 
 ## Capitolo 3 - Insiemi, logica e relazioni
 1. Insiemi: T: 147 - E: 174 - Cmp: Insiemi, loro rappresentazioni, sottoinsiemi p. 178

@@ -1,5 +1,8 @@
 
+.~lock.*
+
 005*/
+output_esercizi*/
 
 # --- Python ---
 __pycache__/
@@ -109,3 +112,4 @@ desktop.ini
 *.log
 .env
 .env.*
+
