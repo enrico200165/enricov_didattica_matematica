@@ -120,6 +120,18 @@ def latex_x_minus(r) -> str:
     return f"x - {r}" if r >= 0 else f"x + {abs(r)}"
 
 
+def text_x_minus(r) -> str:
+    """Come latex_x_minus ma per il testo semplice (senza comandi LaTeX)."""
+    return f"x - {r}" if r >= 0 else f"x + {abs(r)}"
+
+
+def signed_mul(a, b) -> str:
+    """Restituisce 'a·b' mettendo tra parentesi i valori negativi, per evitare 'a·-b'."""
+    a_str = f"({a})" if a < 0 else str(a)
+    b_str = f"({b})" if b < 0 else str(b)
+    return f"{a_str}·{b_str}"
+
+
 def safe_slug(text: str) -> str:
     text = text.lower().replace("à", "a").replace("è", "e").replace("é", "e")
     text = text.replace("ì", "i").replace("ò", "o").replace("ù", "u")
@@ -258,7 +270,7 @@ def print_accessory_report(accessories: list[AccessoryItem]) -> None:
 
 # ---- Capitolo 1 - Numeri naturali e numeri interi ----
 
-def lez_1_1(rng, n):
+def lez_1_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         nums = [rng.randint(0, 500) for _ in range(4)]
@@ -273,7 +285,7 @@ def lez_1_1(rng, n):
     return out
 
 
-def lez_1_2(rng, n):
+def lez_1_2(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         a_, b_, c_ = [rng.randint(2, 20) for _ in range(3)]
@@ -290,7 +302,7 @@ def lez_1_2(rng, n):
     return out
 
 
-def lez_1_3(rng, n):
+def lez_1_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         base = rng.randint(2, 9)
@@ -315,7 +327,7 @@ def lez_1_3(rng, n):
     return out
 
 
-def lez_1_4(rng, n):
+def lez_1_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         A, B = rng.randint(12, 96), rng.randint(12, 96)
@@ -333,7 +345,7 @@ def lez_1_4(rng, n):
     return out
 
 
-def lez_1_5(rng, n):
+def lez_1_5(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         nums = [rng.randint(-30, 30) for _ in range(5)]
@@ -347,7 +359,7 @@ def lez_1_5(rng, n):
     return out
 
 
-def lez_1_6(rng, n):
+def lez_1_6(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         A, B, D = [rng.randint(-12, 12) for _ in range(3)]
@@ -365,7 +377,7 @@ def lez_1_6(rng, n):
     return out
 
 
-def lez_1_7(rng, n):
+def lez_1_7(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         base = random_nonzero(rng, -9, 9)
@@ -385,7 +397,7 @@ def lez_1_7(rng, n):
 
 # ---- Capitolo 2 - Numeri razionali e numeri reali ----
 
-def lez_2_1(rng, n):
+def lez_2_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         num = rng.randint(-60, 60)
@@ -401,7 +413,7 @@ def lez_2_1(rng, n):
     return out
 
 
-def lez_2_2(rng, n):
+def lez_2_2(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         q1 = Fraction(rng.randint(1, 9), rng.randint(2, 12))
@@ -418,7 +430,7 @@ def lez_2_2(rng, n):
     return out
 
 
-def lez_2_3(rng, n):
+def lez_2_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         q1 = Fraction(rng.randint(1, 9), rng.randint(2, 12))
@@ -443,7 +455,7 @@ def lez_2_3(rng, n):
     return out
 
 
-def lez_2_4(rng, n):
+def lez_2_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         den = rng.choice([2, 4, 5, 8, 10, 20, 25, 3, 6, 7, 9, 11])
@@ -461,7 +473,7 @@ def lez_2_4(rng, n):
     return out
 
 
-def lez_2_5(rng, n):
+def lez_2_5(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         choice = rng.choice(["proporzione", "percentuale"])
@@ -482,7 +494,7 @@ def lez_2_5(rng, n):
     return out
 
 
-def lez_2_6(rng, n):
+def lez_2_6(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         choice = rng.choice(["irrazionale", "razionale"])
@@ -504,7 +516,7 @@ def lez_2_6(rng, n):
     return out
 
 
-def lez_2_7(rng, n):
+def lez_2_7(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         coeff = rng.randint(12, 987)
@@ -524,7 +536,7 @@ def lez_2_7(rng, n):
 
 # ---- Capitolo 3 - Insiemi, logica e relazioni ----
 
-def lez_3_1(rng, n):
+def lez_3_1(rng, n, detail: int = 2):
     out = []
     universe = list(range(1, 15))
     for _ in range(n):
@@ -539,7 +551,7 @@ def lez_3_1(rng, n):
     return out
 
 
-def lez_3_2(rng, n):
+def lez_3_2(rng, n, detail: int = 2):
     out = []
     universe = list(range(1, 13))
     for _ in range(n):
@@ -556,7 +568,7 @@ def lez_3_2(rng, n):
     return out
 
 
-def lez_3_3(rng, n):
+def lez_3_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         p, q = rng.choice([True, False]), rng.choice([True, False])
@@ -581,7 +593,7 @@ def lez_3_3(rng, n):
     return out
 
 
-def lez_3_4(rng, n):
+def lez_3_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         p, q, r = [rng.choice([True, False]) for _ in range(3)]
@@ -597,7 +609,7 @@ def lez_3_4(rng, n):
     return out
 
 
-def lez_3_5(rng, n):
+def lez_3_5(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         lo, hi = 1, 20
@@ -610,7 +622,7 @@ def lez_3_5(rng, n):
     return out
 
 
-def lez_3_6(rng, n):
+def lez_3_6(rng, n, detail: int = 2):
     out = []
     universe = list(range(1, 13))
     for _ in range(n):
@@ -625,7 +637,7 @@ def lez_3_6(rng, n):
     return out
 
 
-def lez_3_7(rng, n):
+def lez_3_7(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         A = sorted(rng.sample(range(1, 8), 4))
@@ -642,7 +654,7 @@ def lez_3_7(rng, n):
     return out
 
 
-def lez_3_8(rng, n):
+def lez_3_8(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         choice = rng.choice(["equivalenza", "ordine"])
@@ -671,7 +683,7 @@ def lez_3_8(rng, n):
     return out
 
 
-def lez_3_9(rng, n):
+def lez_3_9(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         A = sorted(rng.sample(range(1, 10), 4))
@@ -692,7 +704,7 @@ def lez_3_9(rng, n):
 
 # ---- Capitolo 4 - Monomi ----
 
-def lez_4_1(rng, n):
+def lez_4_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         c = random_nonzero(rng, -9, 9)
@@ -705,7 +717,7 @@ def lez_4_1(rng, n):
     return out
 
 
-def lez_4_2(rng, n):
+def lez_4_2(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         choice = rng.choice(["sum", "product"])
@@ -715,23 +727,41 @@ def lez_4_2(rng, n):
             mono = x**px * y**py
             expr = c1 * mono + c2 * mono
             res = sp.expand(expr)
-            text = f"Semplificare la somma di monomi simili: {s(c1*mono)} + {s(c2*mono)}."
-            sol = f"I monomi sono simili: stessa parte letterale.\nSomma coefficienti: {c1}+({c2}) = {c1+c2}.\nRisultato: {s(res)}."
             second_sign = "-" if c2 < 0 else "+"
+            text = f"Semplificare la somma di monomi simili: {s(c1*mono)} {second_sign} {s(abs(c2)*mono)}."
+            if detail <= 1:
+                sol = f"I monomi sono simili (stessa parte letterale): sommo i coefficienti {c1}+({c2}) = {c1+c2}.\nRisultato: {s(res)}."
+            else:
+                sol = (
+                    f"Riconosco che i monomi sono simili, perché hanno la stessa parte letterale {s(mono)}.\n"
+                    f"Sommo i coefficienti: {c1} + ({c2}) = {c1+c2}.\n"
+                    f"La parte letterale resta invariata.\n"
+                    f"Risultato: {s(res)}."
+                )
             latex = f"{sp.latex(c1*mono)} {second_sign} {sp.latex(abs(c2)*mono)} = {sp.latex(res)}"
         else:
             c1, c2 = random_nonzero(rng, -6, 6), random_nonzero(rng, -6, 6)
-            m1 = c1 * x**rng.randint(1, 3) * y**rng.randint(0, 2)
-            m2 = c2 * x**rng.randint(0, 3) * y**rng.randint(1, 3)
+            e1x, e1y = rng.randint(1, 3), rng.randint(0, 2)
+            e2x, e2y = rng.randint(0, 3), rng.randint(1, 3)
+            m1 = c1 * x**e1x * y**e1y
+            m2 = c2 * x**e2x * y**e2y
             res = sp.expand(m1 * m2)
             text = f"Calcolare il prodotto: ({s(m1)}) · ({s(m2)})."
-            sol = f"Si moltiplicano i coefficienti; per le stesse basi si sommano gli esponenti.\nRisultato: {s(res)}."
+            if detail <= 1:
+                sol = f"Si moltiplicano i coefficienti; per le stesse basi si sommano gli esponenti.\nRisultato: {s(res)}."
+            else:
+                sol = (
+                    f"Moltiplico i coefficienti: ({c1}) · ({c2}) = {c1*c2}.\n"
+                    f"Per la x sommo gli esponenti: {e1x} + {e2x} = {e1x+e2x}.\n"
+                    f"Per la y sommo gli esponenti: {e1y} + {e2y} = {e1y+e2y}.\n"
+                    f"Risultato: {s(res)}."
+                )
             latex = f"({sp.latex(m1)}) \\cdot ({sp.latex(m2)}) = {sp.latex(res)}"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_4_3(rng, n):
+def lez_4_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         choice = rng.choice(["div", "pow"])
@@ -744,7 +774,15 @@ def lez_4_3(rng, n):
             m2 = c2 * x**px2 * y**py2
             res = sp.cancel(m1 / m2)
             text = f"Calcolare il quoziente: ({s(m1)}) : ({s(m2)})."
-            sol = f"Si dividono i coefficienti; per le stesse basi si sottraggono gli esponenti.\nRisultato: {s(res)}."
+            if detail <= 1:
+                sol = f"Si dividono i coefficienti; per le stesse basi si sottraggono gli esponenti.\nRisultato: {s(res)}."
+            else:
+                sol = (
+                    f"Divido i coefficienti: ({c1}) : ({c2}) = {sp.nsimplify(sp.Rational(c1, c2))}.\n"
+                    f"Per la x sottraggo gli esponenti: {px1} - {px2} = {px1-px2}.\n"
+                    f"Per la y sottraggo gli esponenti: {py1} - {py2} = {py1-py2}.\n"
+                    f"Risultato: {s(res)}."
+                )
             latex = f"\\dfrac{{{sp.latex(m1)}}}{{{sp.latex(m2)}}} = {sp.latex(res)}"
         else:
             c = random_nonzero(rng, -5, 5)
@@ -753,13 +791,21 @@ def lez_4_3(rng, n):
             mono = c * x**px * y**py
             res = sp.expand(mono**e)
             text = f"Calcolare la potenza: ({s(mono)})^{e}."
-            sol = f"Si eleva a potenza il coefficiente e si moltiplica ogni esponente per l'esponente esterno.\nRisultato: {s(res)}."
+            if detail <= 1:
+                sol = f"Si eleva a potenza il coefficiente e si moltiplica ogni esponente per l'esponente esterno.\nRisultato: {s(res)}."
+            else:
+                sol = (
+                    f"Elevo il coefficiente a potenza: ({c})^{e} = {c**e}.\n"
+                    f"Moltiplico l'esponente di x per {e}: {px} · {e} = {px*e}.\n"
+                    f"Moltiplico l'esponente di y per {e}: {py} · {e} = {py*e}.\n"
+                    f"Risultato: {s(res)}."
+                )
             latex = f"\\left({sp.latex(mono)}\\right)^{{{e}}} = {sp.latex(res)}"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_4_4(rng, n):
+def lez_4_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         c1, c2 = rng.randint(2, 12), rng.randint(2, 12)
@@ -778,7 +824,7 @@ def lez_4_4(rng, n):
 
 # ---- Capitolo 5 - Polinomi ----
 
-def lez_5_1(rng, n):
+def lez_5_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         poly = sp.Integer(0)
@@ -794,7 +840,7 @@ def lez_5_1(rng, n):
     return out
 
 
-def lez_5_2(rng, n):
+def lez_5_2(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         A, B, C, D = [random_nonzero(rng, -6, 6) for _ in range(4)]
@@ -803,32 +849,72 @@ def lez_5_2(rng, n):
         if is_sum:
             res = sp.expand(p + q)
             text = f"Calcolare la somma tra polinomi: ({s(p)}) + ({s(q)})."
-            sol = f"Si sommano i coefficienti dei termini simili.\nRisultato: {s(res)}."
+            if detail <= 1:
+                sol = f"Si sommano i coefficienti dei termini simili.\nRisultato: {s(res)}."
+            else:
+                sol = (
+                    f"Sommo i coefficienti dei termini in x: {A} + ({C}) = {A+C}.\n"
+                    f"Sommo i termini noti: {B} + ({D}) = {B+D}.\n"
+                    f"Risultato: {s(res)}."
+                )
             latex = f"({sp.latex(p)}) + ({sp.latex(q)}) = {sp.latex(res)}"
         else:
             res = sp.expand(p * q)
             text = f"Calcolare il prodotto tra polinomi: ({s(p)})({s(q)})."
-            sol = f"Si applica la proprietà distributiva tra ogni termine del primo e ogni termine del secondo polinomio.\nRisultato: {s(res)}."
+            if detail <= 1:
+                sol = f"Si applica la proprietà distributiva tra ogni termine del primo e ogni termine del secondo polinomio.\nRisultato: {s(res)}."
+            else:
+                ac, ad, bc, bd = A * C, A * D, B * C, B * D
+                combine_sign = "+" if bc >= 0 else "-"
+                sol = (
+                    f"Applico la proprietà distributiva: individuo i quattro prodotti parziali da calcolare: "
+                    f"({A}x)({C}x), ({A}x)({D}), ({B})({C}x), ({B})({D}).\n"
+                    f"Eseguo tutte le moltiplicazioni: ({A}x)({C}x) = {ac}x^2; ({A}x)({D}) = {ad}x; "
+                    f"({B})({C}x) = {bc}x; ({B})({D}) = {bd}.\n"
+                    f"Sommo i termini simili (di pari grado): i due termini di primo grado si combinano, "
+                    f"{ad}x {combine_sign} {abs(bc)}x = {ad+bc}x; il termine di secondo grado e il termine noto restano da soli.\n"
+                    f"Risultato: {s(res)}."
+                )
             latex = f"({sp.latex(p)}) \\cdot ({sp.latex(q)}) = {sp.latex(res)}"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_5_3(rng, n):
+def lez_5_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         A, B = random_nonzero(rng, -6, 6), random_nonzero(rng, -6, 6)
         is_square = rng.choice([True, False])
         if is_square:
             p = A * x + B * y
+            u2, v2, uv2 = A**2, B**2, 2 * A * B
             res = sp.expand(p**2)
             text = f"Sviluppare il quadrato di binomio: ({s(p)})^2."
-            sol = f"Formula: (u+v)^2 = u^2+2uv+v^2, con u={A}x e v={B}y.\nRisultato: {s(res)}."
+            if detail <= 1:
+                sol = f"Formula: (u+v)^2 = u^2+2uv+v^2, con u={A}x e v={B}y.\nRisultato: {s(res)}."
+            else:
+                sol = (
+                    f"Applico la formula (u+v)^2 = u^2 + 2uv + v^2, con u = {A}x e v = {B}y.\n"
+                    f"Calcolo u^2 e v^2: ({A})^2 x^2 = {u2}x^2; ({B})^2 y^2 = {v2}y^2.\n"
+                    f"Calcolo il doppio prodotto 2uv: 2·({A})·({B}) xy = {uv2}xy.\n"
+                    f"Sommo i tre termini. Risultato: {s(res)}."
+                )
             latex = f"({sp.latex(p)})^{{2}} = {sp.latex(res)}"
         else:
+            u2, v2 = A**2, B**2
             res = sp.expand((A * x + B * y) * (A * x - B * y))
-            text = f"Calcolare il prodotto notevole: ({A}x + {B}y)({A}x - {B}y)."
-            sol = f"Formula: (u+v)(u-v) = u^2 - v^2.\nRisultato: {s(res)}."
+            sign1 = "+" if B >= 0 else "-"
+            sign2 = "-" if B >= 0 else "+"
+            text = f"Calcolare il prodotto notevole: ({A}x {sign1} {abs(B)}y)({A}x {sign2} {abs(B)}y)."
+            if detail <= 1:
+                sol = f"Formula: (u+v)(u-v) = u^2 - v^2.\nRisultato: {s(res)}."
+            else:
+                sol = (
+                    f"Applico la formula (u+v)(u-v) = u^2 - v^2, con u = {A}x e v = {B}y.\n"
+                    f"Calcolo u^2: ({A})^2 x^2 = {u2}x^2.\n"
+                    f"Calcolo v^2: ({B})^2 y^2 = {v2}y^2.\n"
+                    f"Sottraggo v^2 da u^2. Risultato: {s(res)}."
+                )
             sum_part = sp.latex(A * x + B * y)
             diff_part = sp.latex(A * x - B * y)
             latex = f"({sum_part})({diff_part}) = {sp.latex(res)}"
@@ -836,14 +922,24 @@ def lez_5_3(rng, n):
     return out
 
 
-def lez_5_4(rng, n):
+def lez_5_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         A, B = random_nonzero(rng, -4, 4), random_nonzero(rng, -4, 4)
         p = A * x + B * y
         res = sp.expand(p**3)
         text = f"Sviluppare il cubo di binomio: ({s(p)})^3."
-        sol = f"Formula: (u+v)^3 = u^3 + 3u^2v + 3uv^2 + v^3.\nRisultato: {s(res)}."
+        if detail <= 1:
+            sol = f"Formula: (u+v)^3 = u^3 + 3u^2v + 3uv^2 + v^3.\nRisultato: {s(res)}."
+        else:
+            u3, v3 = A**3, B**3
+            u2v, uv2 = 3 * A**2 * B, 3 * A * B**2
+            sol = (
+                f"Applico la formula (u+v)^3 = u^3 + 3u^2v + 3uv^2 + v^3, con u = {A}x e v = {B}y.\n"
+                f"Calcolo u^3 e v^3: ({A})^3 x^3 = {u3}x^3; ({B})^3 y^3 = {v3}y^3.\n"
+                f"Calcolo 3u^2v e 3uv^2: 3·({A})^2·({B}) x^2y = {u2v}x^2y; 3·({A})·({B})^2 xy^2 = {uv2}xy^2.\n"
+                f"Sommo i quattro termini. Risultato: {s(res)}."
+            )
         latex = f"({sp.latex(p)})^{{3}} = {sp.latex(res)}"
         out.append(Exercise(text, sol, latex))
     return out
@@ -851,7 +947,7 @@ def lez_5_4(rng, n):
 
 # ---- Capitolo 6 - Equazioni lineari ----
 
-def lez_6_1(rng, n):
+def lez_6_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         A, C = random_nonzero(rng, -6, 6), rng.randint(-15, 15)
@@ -868,7 +964,7 @@ def lez_6_1(rng, n):
     return out
 
 
-def lez_6_2(rng, n):
+def lez_6_2(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         B = rng.randint(-15, 15)
@@ -881,7 +977,7 @@ def lez_6_2(rng, n):
     return out
 
 
-def lez_6_3(rng, n):
+def lez_6_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         A = random_nonzero(rng, -8, 8)
@@ -891,13 +987,23 @@ def lez_6_3(rng, n):
         B, D = rng.randint(-20, 20), rng.randint(-20, 20)
         sol_x = Fraction(D - B, A - C)
         text = f"Risolvere l'equazione: {A}x + ({B}) = {C}x + ({D})."
-        sol = f"{A}x - {C}x = {D} - ({B}).\n{A-C}x = {D-B}.\nx = ({D-B})/({A-C}) = {frac_text(sol_x)}."
+        c_sign = "-" if C >= 0 else "+"
+        move_x_str = f"{A}x {c_sign} {abs(C)}x"
+        if detail <= 1:
+            sol = f"{move_x_str} = {D} - ({B}).\n{A-C}x = {D-B}.\nx = ({D-B})/({A-C}) = {frac_text(sol_x)}."
+        else:
+            sol = (
+                f"Porto i termini con x al primo membro e i termini noti al secondo: {move_x_str} = {D} - ({B}).\n"
+                f"Riduco i termini simili in ciascun membro: {A-C}x = {D-B}.\n"
+                f"Divido entrambi i membri per il coefficiente di x, {A-C}.\n"
+                f"Risultato: x = ({D-B})/({A-C}) = {frac_text(sol_x)}."
+            )
         latex = f"{A}x + ({B}) = {C}x + ({D})"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_6_4(rng, n):
+def lez_6_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         k = rng.randint(2, 9)
@@ -905,10 +1011,18 @@ def lez_6_4(rng, n):
         result = rng.randint(20, 100)
         sol_x = Fraction(result - add, k)
         text = f"Un numero moltiplicato per {k} e aumentato di {add} dà come risultato {result}. Qual è il numero?"
-        sol = (
-            f"Indicando con x il numero cercato: {k}x + {add} = {result}.\n"
-            f"{k}x = {result-add}.\nx = {frac_text(sol_x)}."
-        )
+        if detail <= 1:
+            sol = (
+                f"Indicando con x il numero cercato: {k}x + {add} = {result}.\n"
+                f"{k}x = {result-add}.\nx = {frac_text(sol_x)}."
+            )
+        else:
+            sol = (
+                f"Traduco il problema in equazione: indico con x il numero cercato, ottengo {k}x + {add} = {result}.\n"
+                f"Isolo il termine con x: {k}x = {result} - {add} = {result-add}.\n"
+                f"Divido per {k} per ricavare x.\n"
+                f"Risultato: x = {frac_text(sol_x)}."
+            )
         latex = f"{k}x + {add} = {result}"
         out.append(Exercise(text, sol, latex))
     return out
@@ -916,7 +1030,7 @@ def lez_6_4(rng, n):
 
 # ---- Capitolo 7 - Funzioni ----
 
-def lez_7_1(rng, n):
+def lez_7_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         a_ = random_nonzero(rng, -4, 4)
@@ -926,13 +1040,15 @@ def lez_7_1(rng, n):
         fx = a_ * x**2 + b_ * x + c_
         result = fx.subs(x, val)
         text = f"Data la funzione f(x) = {s(fx)}, calcolare f({val})."
-        sol = f"Sostituendo x = {val}: f({val}) = {a_}·({val})^2 + {b_}·({val}) + {c_} = {result}."
+        b_str = f"({b_})" if b_ < 0 else str(b_)
+        c_str = f"({c_})" if c_ < 0 else str(c_)
+        sol = f"Sostituendo x = {val}: f({val}) = {a_}·({val})^2 + {b_str}·({val}) + {c_str} = {result}."
         latex = f"f(x) = {sp.latex(fx)}"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_7_3(rng, n):
+def lez_7_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         m = random_nonzero(rng, -6, 6)
@@ -947,7 +1063,7 @@ def lez_7_3(rng, n):
     return out
 
 
-def lez_7_4(rng, n):
+def lez_7_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         a1, b1 = random_nonzero(rng, -5, 5), rng.randint(-8, 8)
@@ -961,7 +1077,7 @@ def lez_7_4(rng, n):
     return out
 
 
-def lez_7_5(rng, n):
+def lez_7_5(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         choice = rng.choice(["diretta", "inversa"])
@@ -984,7 +1100,7 @@ def lez_7_5(rng, n):
     return out
 
 
-def lez_7_6(rng, n):
+def lez_7_6(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         m = random_nonzero(rng, -5, 5)
@@ -998,7 +1114,7 @@ def lez_7_6(rng, n):
     return out
 
 
-def lez_7_7(rng, n):
+def lez_7_7(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         power = rng.choice([2, 3])
@@ -1014,7 +1130,7 @@ def lez_7_7(rng, n):
     return out
 
 
-def lez_7_8(rng, n):
+def lez_7_8(rng, n, detail: int = 2):
     out = []
     angles = [0, 30, 45, 60, 90]
     for _ in range(n):
@@ -1030,7 +1146,36 @@ def lez_7_8(rng, n):
 
 # ---- Capitolo 8 - Divisione tra polinomi e scomposizione in fattori ----
 
-def lez_8_1(rng, n):
+def long_division_steps(dividend, divisor, var):
+    """Esegue la divisione polinomiale passo per passo (un termine del quoziente alla volta)
+    e restituisce (quoziente, resto, elenco di stringhe che descrivono ogni passo)."""
+    steps = []
+    remainder = sp.expand(dividend)
+    quotient_terms = []
+    divisor_poly = sp.Poly(divisor, var)
+    divisor_deg = divisor_poly.degree()
+    lead_divisor = divisor_poly.LC()
+    while remainder != 0:
+        rem_poly = sp.Poly(remainder, var)
+        if rem_poly.degree() < divisor_deg:
+            break
+        lead_rem = rem_poly.LC()
+        deg_diff = rem_poly.degree() - divisor_deg
+        term_coeff = sp.nsimplify(lead_rem / lead_divisor)
+        term = term_coeff * var**deg_diff
+        quotient_terms.append(term)
+        product = sp.expand(term * divisor)
+        new_remainder = sp.expand(remainder - product)
+        lead_rem_str = s(lead_rem * var**rem_poly.degree()) if rem_poly.degree() > 0 else s(lead_rem)
+        lead_div_str = s(lead_divisor * var**divisor_deg) if divisor_deg > 0 else s(lead_divisor)
+        steps.append(f"Divido {lead_rem_str} per {lead_div_str}: ottengo il termine {s(term)} del quoziente.")
+        steps.append(f"Moltiplico {s(term)} per il divisore e sottraggo dal resto: nuovo resto parziale = {s(new_remainder)}.")
+        remainder = new_remainder
+    quotient = sp.expand(sum(quotient_terms)) if quotient_terms else sp.Integer(0)
+    return quotient, remainder, steps
+
+
+def lez_8_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         coeffs = [random_nonzero(rng, -6, 6) for _ in range(4)]
@@ -1038,30 +1183,51 @@ def lez_8_1(rng, n):
         divisor = random_nonzero(rng, 1, 4) * x + rng.randint(-6, 6)
         q, rem = sp.div(dividend, divisor, x)
         text = f"Eseguire la divisione: ({s(dividend)}) : ({s(divisor)})."
-        sol = f"Quoziente: {s(q)}.\nResto: {s(rem)}.\nVerifica: ({s(divisor)})·({s(q)}) + ({s(rem)}) = {s(sp.expand(divisor*q+rem))}."
+        if detail <= 1:
+            sol = f"Quoziente: {s(q)}.\nResto: {s(rem)}.\nVerifica: ({s(divisor)})·({s(q)}) + ({s(rem)}) = {s(sp.expand(divisor*q+rem))}."
+        else:
+            _, _, steps = long_division_steps(dividend, divisor, x)
+            sol = "\n".join(steps) + f"\nQuoziente finale: {s(q)}. Resto finale: {s(rem)}."
         latex = f"\\left({sp.latex(dividend)}\\right) : \\left({sp.latex(divisor)}\\right)"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_8_2(rng, n):
+def lez_8_2(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         coeffs = [random_nonzero(rng, -6, 6) for _ in range(4)]
         dividend = sum(c * x**i for i, c in enumerate(reversed(coeffs)))
         r = rng.randint(-5, 5)
         q, rem = sp.div(dividend, x - r, x)
-        text = f"Applicare la regola di Ruffini per dividere P(x) = {s(dividend)} per (x - {r})."
-        sol = (
-            "Si scrivono i coefficienti di P(x) e si moltiplicano progressivamente per la radice del divisore, sommando ai coefficienti successivi.\n"
-            f"Quoziente: {s(q)}.\nResto: {s(rem)}."
-        )
+        text = f"Applicare la regola di Ruffini per dividere P(x) = {s(dividend)} per ({text_x_minus(r)})."
+        if detail <= 1:
+            sol = (
+                "Si scrivono i coefficienti di P(x) e si moltiplicano progressivamente per la radice del divisore, sommando ai coefficienti successivi.\n"
+                f"Quoziente: {s(q)}.\nResto: {s(rem)}."
+            )
+        else:
+            all_coeffs = [sp.Poly(dividend, x).all_coeffs()[i] for i in range(len(sp.Poly(dividend, x).all_coeffs()))]
+            running = [all_coeffs[0]]
+            step_lines = [f"Scrivo i coefficienti di P(x) in ordine decrescente: {all_coeffs}.", f"Riporto il primo coefficiente: {running[0]}."]
+            for coeff in all_coeffs[1:]:
+                prev = running[-1]
+                prodotto = prev * r
+                nuovo = coeff + prodotto
+                mult_str = signed_mul(prev, r)
+                add_sign = "+" if prodotto >= 0 else "-"
+                step_lines.append(
+                    f"Moltiplico {prev} per la radice {r}: {mult_str} = {prodotto}; "
+                    f"sommo al coefficiente successivo {coeff}: {coeff} {add_sign} {abs(prodotto)} = {nuovo}."
+                )
+                running.append(nuovo)
+            sol = "\n".join(step_lines) + f"\nGli ultimi valori ottenuti sono i coefficienti del quoziente e, per ultimo, il resto: quoziente = {s(q)}, resto = {s(rem)}."
         latex = f"P(x) = {sp.latex(dividend)}, \\quad D(x) = {latex_x_minus(r)}"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_8_3(rng, n):
+def lez_8_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         coeffs = [random_nonzero(rng, -6, 6) for _ in range(4)]
@@ -1069,18 +1235,18 @@ def lez_8_3(rng, n):
         r = rng.randint(-5, 5)
         val = dividend.subs(x, r)
         divisible = val == 0
-        text = f"Usando il teorema del resto, stabilire se P(x) = {s(dividend)} è divisibile per (x - {r})."
+        text = f"Usando il teorema del resto, stabilire se P(x) = {s(dividend)} è divisibile per ({text_x_minus(r)})."
         sol = (
-            f"Il teorema del resto dice che il resto della divisione per (x-{r}) è uguale a P({r}).\n"
+            f"Il teorema del resto dice che il resto della divisione per ({text_x_minus(r)}) è uguale a P({r}).\n"
             f"P({r}) = {val}.\n"
-            f"P(x) {'è' if divisible else 'non è'} divisibile per (x - {r})."
+            f"P(x) {'è' if divisible else 'non è'} divisibile per ({text_x_minus(r)})."
         )
         latex = f"P(x) = {sp.latex(dividend)}"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_8_4(rng, n):
+def lez_8_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         c = random_nonzero(rng, 2, 9)
@@ -1096,7 +1262,7 @@ def lez_8_4(rng, n):
     return out
 
 
-def lez_8_5(rng, n):
+def lez_8_5(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         r1, r2 = rng.randint(-8, 8), rng.randint(-8, 8)
@@ -1111,7 +1277,7 @@ def lez_8_5(rng, n):
     return out
 
 
-def lez_8_6(rng, n):
+def lez_8_6(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         A, B = random_nonzero(rng, 1, 6), random_nonzero(rng, 1, 6)
@@ -1129,7 +1295,7 @@ def lez_8_6(rng, n):
     return out
 
 
-def lez_8_7(rng, n):
+def lez_8_7(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         r1 = r2 = r3 = 0
@@ -1139,7 +1305,7 @@ def lez_8_7(rng, n):
         text = f"Scomporre in fattori utilizzando il metodo di Ruffini: {s(poly)}."
         sol = (
             f"Si cerca una radice tra i divisori del termine noto: una radice è x = {r1}.\n"
-            f"Dividendo per (x - {r1}) con Ruffini si ottiene un quoziente di secondo grado, ulteriormente scomponibile.\n"
+            f"Dividendo per ({text_x_minus(r1)}) con Ruffini si ottiene un quoziente di secondo grado, ulteriormente scomponibile.\n"
             f"Scomposizione completa: {s(sp.factor(poly))}."
         )
         latex = sp.latex(poly)
@@ -1147,7 +1313,7 @@ def lez_8_7(rng, n):
     return out
 
 
-def lez_8_8(rng, n):
+def lez_8_8(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         common_r = rng.randint(-5, 5)
@@ -1162,8 +1328,8 @@ def lez_8_8(rng, n):
         mcm = sp.expand((x - common_r) * (x - r2) * (x - r3))
         text = f"Determinare MCD e mcm dei polinomi P(x) = {s(p1)} e Q(x) = {s(p2)}."
         sol = (
-            f"Scomponendo: P(x) = (x-{common_r})(x-{r2}), Q(x) = (x-{common_r})(x-{r3}).\n"
-            f"MCD = fattore comune = (x - {common_r}).\n"
+            f"Scomponendo: P(x) = ({text_x_minus(common_r)})({text_x_minus(r2)}), Q(x) = ({text_x_minus(common_r)})({text_x_minus(r3)}).\n"
+            f"MCD = fattore comune = ({text_x_minus(common_r)}).\n"
             f"mcm = {s(mcm)}."
         )
         latex = f"P(x) = {sp.latex(p1)}, \\quad Q(x) = {sp.latex(p2)}"
@@ -1173,19 +1339,19 @@ def lez_8_8(rng, n):
 
 # ---- Capitolo 9 - Frazioni algebriche ed equazioni fratte e letterali ----
 
-def lez_9_1(rng, n):
+def lez_9_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         r = rng.randint(-8, 8)
         num = random_nonzero(rng, -9, 9)
-        text = f"Determinare le condizioni di esistenza della frazione algebrica: {num} / (x - {r})."
-        sol = f"Il denominatore deve essere diverso da zero: x - {r} ≠ 0, quindi x ≠ {r}."
+        text = f"Determinare le condizioni di esistenza della frazione algebrica: {num} / ({text_x_minus(r)})."
+        sol = f"Il denominatore deve essere diverso da zero: {text_x_minus(r)} ≠ 0, quindi x ≠ {r}."
         latex = f"\\dfrac{{{num}}}{{{latex_x_minus(r)}}}"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_9_2(rng, n):
+def lez_9_2(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         r = rng.randint(-6, 6)
@@ -1199,44 +1365,66 @@ def lez_9_2(rng, n):
     return out
 
 
-def lez_9_3(rng, n):
+def lez_9_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         r1, r2 = rng.randint(-5, 5), rng.randint(-5, 5)
         while r1 == r2:
             r2 = rng.randint(-5, 5)
-        num = sp.expand((x - r1) * (x + rng.randint(1, 5)))
+        extra = rng.randint(1, 5)
+        num = sp.expand((x - r1) * (x + extra))
         den = sp.expand((x - r1) * (x - r2))
+        num_fact = sp.factor(num)
+        den_fact = sp.factor(den)
         simp = sp.cancel(num / den)
         text = f"Semplificare la frazione algebrica ({s(num)}) / ({s(den)}) indicando le condizioni di esistenza."
-        sol = (
-            f"Scomponendo: numeratore = {s(sp.factor(num))}, denominatore = {s(sp.factor(den))}.\n"
-            f"Condizioni di esistenza: x ≠ {r1}, x ≠ {r2}.\nSemplificata: {s(simp)}."
-        )
+        if detail <= 1:
+            sol = (
+                f"Scomponendo: numeratore = {s(num_fact)}, denominatore = {s(den_fact)}.\n"
+                f"Condizioni di esistenza: x ≠ {r1}, x ≠ {r2}.\nSemplificata: {s(simp)}."
+            )
+        else:
+            sol = (
+                f"Scompongo il numeratore in fattori: {s(num)} = {s(num_fact)}.\n"
+                f"Scompongo il denominatore in fattori: {s(den)} = {s(den_fact)}.\n"
+                f"Impongo le condizioni di esistenza (denominatore diverso da zero): x ≠ {r1}, x ≠ {r2}.\n"
+                f"Semplifico il fattore comune ({text_x_minus(r1)}) tra numeratore e denominatore.\n"
+                f"Risultato: {s(simp)}, con x ≠ {r1} e x ≠ {r2}."
+            )
         latex = f"\\dfrac{{{sp.latex(num)}}}{{{sp.latex(den)}}} = {sp.latex(simp)}"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_9_4(rng, n):
+def lez_9_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         r = random_nonzero(rng, -6, 6)
         A = random_nonzero(rng, -6, 6)
         Bnz = random_nonzero(rng, -6, 6)
         sol_x = Fraction(A, Bnz) + r
-        text = f"Risolvere l'equazione fratta: {A} / (x - {r}) = {Bnz}, indicando le condizioni di esistenza."
-        sol = (
-            f"Condizione di esistenza: x ≠ {r}.\n"
-            f"Moltiplicando per (x - {r}): {A} = {Bnz}(x - {r}).\n"
-            f"x - {r} = {frac_text(Fraction(A,Bnz))}.\nx = {frac_text(sol_x)}."
-        )
+        xm = text_x_minus(r)
+        text = f"Risolvere l'equazione fratta: {A} / ({xm}) = {Bnz}, indicando le condizioni di esistenza."
+        if detail <= 1:
+            sol = (
+                f"Condizione di esistenza: x ≠ {r}.\n"
+                f"Moltiplicando per ({xm}): {A} = {Bnz}({xm}).\n"
+                f"{xm} = {frac_text(Fraction(A,Bnz))}.\nx = {frac_text(sol_x)}."
+            )
+        else:
+            sol = (
+                f"Impongo la condizione di esistenza: il denominatore deve essere diverso da zero, quindi x ≠ {r}.\n"
+                f"Moltiplico entrambi i membri per ({xm}) per eliminare il denominatore: {A} = {Bnz}·({xm}).\n"
+                f"Divido per {Bnz}: {xm} = {frac_text(Fraction(A,Bnz))}.\n"
+                f"Isolo x: x = {frac_text(sol_x)}.\n"
+                f"Verifico che la soluzione sia accettabile: {frac_text(sol_x)} ≠ {r}, quindi è valida."
+            )
         latex = f"\\dfrac{{{A}}}{{{latex_x_minus(r)}}} = {Bnz}"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_9_5(rng, n):
+def lez_9_5(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         B = rng.randint(-15, 15)
@@ -1252,7 +1440,7 @@ def lez_9_5(rng, n):
 
 # ---- Capitolo 10 - Disequazioni lineari ----
 
-def lez_10_1(rng, n):
+def lez_10_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         a_, b_ = rng.randint(-20, 20), rng.randint(-20, 20)
@@ -1266,7 +1454,7 @@ def lez_10_1(rng, n):
     return out
 
 
-def lez_10_2(rng, n):
+def lez_10_2(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         sign = rng.choice([">", "<"])
@@ -1275,13 +1463,21 @@ def lez_10_2(rng, n):
         threshold = Fraction(C - B, A)
         final_sign = sign if A > 0 else ("<" if sign == ">" else ">")
         text = f"Risolvere la disequazione: {A}x + ({B}) {sign} {C}."
-        sol = f"Isolare x: {A}x {sign} {C-B}.\nDividendo per {A} (se negativo il verso si inverte): x {final_sign} {frac_text(threshold)}."
+        if detail <= 1:
+            sol = f"Isolare x: {A}x {sign} {C-B}.\nDividendo per {A} (se negativo il verso si inverte): x {final_sign} {frac_text(threshold)}."
+        else:
+            sol = (
+                f"Porto il termine noto al secondo membro: {A}x {sign} {C} - ({B}) = {C-B}.\n"
+                f"Divido entrambi i membri per {A}.\n"
+                + ("Il coefficiente è positivo, quindi il verso della disequazione non cambia.\n" if A > 0 else "Il coefficiente è negativo, quindi il verso della disequazione si inverte.\n")
+                + f"Risultato: x {final_sign} {frac_text(threshold)}."
+            )
         latex = f"{A}x + ({B}) {sign} {C}"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_10_3(rng, n):
+def lez_10_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         t1 = rng.randint(-10, 10)
@@ -1296,7 +1492,7 @@ def lez_10_3(rng, n):
     return out
 
 
-def lez_10_4(rng, n):
+def lez_10_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         A = random_nonzero(rng, -6, 6)
@@ -1305,16 +1501,24 @@ def lez_10_4(rng, n):
         sol1 = Fraction(C - B, A)
         sol2 = Fraction(-C - B, A)
         text = f"Risolvere l'equazione con valore assoluto: |{A}x + ({B})| = {C}."
-        sol = (
-            f"Si pone {A}x + ({B}) = {C} oppure {A}x + ({B}) = -{C}.\n"
-            f"Primo caso: x = {frac_text(sol1)}.\nSecondo caso: x = {frac_text(sol2)}."
-        )
+        if detail <= 1:
+            sol = (
+                f"Si pone {A}x + ({B}) = {C} oppure {A}x + ({B}) = -{C}.\n"
+                f"Primo caso: x = {frac_text(sol1)}.\nSecondo caso: x = {frac_text(sol2)}."
+            )
+        else:
+            sol = (
+                f"Un valore assoluto uguale a {C} (positivo) si annulla in due casi: l'espressione vale {C} oppure -{C}.\n"
+                f"Primo caso: {A}x + ({B}) = {C}. Risolvo: x = ({C} - ({B}))/{A} = {frac_text(sol1)}.\n"
+                f"Secondo caso: {A}x + ({B}) = -{C}. Risolvo: x = (-{C} - ({B}))/{A} = {frac_text(sol2)}.\n"
+                f"Le soluzioni sono entrambe accettabili: x = {frac_text(sol1)} oppure x = {frac_text(sol2)}."
+            )
         latex = f"|{A}x + ({B})| = {C}"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_10_5(rng, n):
+def lez_10_5(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         A = random_nonzero(rng, 1, 6)
@@ -1324,22 +1528,39 @@ def lez_10_5(rng, n):
         lo, hi = Fraction(-C - B, A), Fraction(C - B, A)
         text = f"Risolvere la disequazione con valore assoluto: |{A}x + ({B})| {sign} {C}."
         if sign == "<":
-            sol = f"|{A}x+({B})| < {C} equivale a -{C} < {A}x+({B}) < {C}.\nSoluzione: {frac_text(lo)} < x < {frac_text(hi)}."
+            if detail <= 1:
+                sol = f"|{A}x+({B})| < {C} equivale a -{C} < {A}x+({B}) < {C}.\nSoluzione: {frac_text(lo)} < x < {frac_text(hi)}."
+            else:
+                sol = (
+                    f"Un valore assoluto minore di {C} (positivo) equivale a una doppia disuguaglianza: -{C} < {A}x + ({B}) < {C}.\n"
+                    f"Sottraggo ({B}) da tutti e tre i membri: {-C-B} < {A}x < {C-B}.\n"
+                    f"Divido tutto per {A}.\n"
+                    f"Risultato: {frac_text(lo)} < x < {frac_text(hi)}."
+                )
         else:
-            sol = f"|{A}x+({B})| > {C} equivale a {A}x+({B}) < -{C} oppure {A}x+({B}) > {C}.\nSoluzione: x < {frac_text(lo)} oppure x > {frac_text(hi)}."
+            if detail <= 1:
+                sol = f"|{A}x+({B})| > {C} equivale a {A}x+({B}) < -{C} oppure {A}x+({B}) > {C}.\nSoluzione: x < {frac_text(lo)} oppure x > {frac_text(hi)}."
+            else:
+                sol = (
+                    f"Un valore assoluto maggiore di {C} (positivo) equivale a due condizioni separate: {A}x + ({B}) < -{C}  oppure  {A}x + ({B}) > {C}.\n"
+                    f"Risolvo la prima: {A}x < {-C-B}, quindi x < {frac_text(lo)}.\n"
+                    f"Risolvo la seconda: {A}x > {C-B}, quindi x > {frac_text(hi)}.\n"
+                    f"Soluzione: x < {frac_text(lo)}  oppure  x > {frac_text(hi)}."
+                )
         latex = f"|{A}x + ({B})| {sign} {C}"
         out.append(Exercise(text, sol, latex))
     return out
 
 
-def lez_10_6(rng, n):
+def lez_10_6(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         r1, r2 = rng.randint(-8, 8), rng.randint(-8, 8)
         while r1 == r2:
             r2 = rng.randint(-8, 8)
         r1, r2 = sorted([r1, r2])
-        text = f"Studiare il segno del prodotto (x - {r1})(x - {r2}) e risolvere (x - {r1})(x - {r2}) > 0."
+        xm1, xm2 = text_x_minus(r1), text_x_minus(r2)
+        text = f"Studiare il segno del prodotto ({xm1})({xm2}) e risolvere ({xm1})({xm2}) > 0."
         sol = (
             f"Il primo fattore è positivo per x > {r1}, il secondo per x > {r2}.\n"
             "Il prodotto è positivo quando i due fattori hanno lo stesso segno.\n"
@@ -1350,14 +1571,15 @@ def lez_10_6(rng, n):
     return out
 
 
-def lez_10_7(rng, n):
+def lez_10_7(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         r1, r2 = rng.randint(-8, 8), rng.randint(-8, 8)
         while r1 == r2:
             r2 = rng.randint(-8, 8)
         lo, hi = sorted([r1, r2])
-        text = f"Risolvere la disequazione fratta: (x - {r1}) / (x - {r2}) > 0, indicando le condizioni di esistenza."
+        xm1, xm2 = text_x_minus(r1), text_x_minus(r2)
+        text = f"Risolvere la disequazione fratta: ({xm1}) / ({xm2}) > 0, indicando le condizioni di esistenza."
         sol = (
             f"Condizione di esistenza: x ≠ {r2}.\n"
             f"Numeratore positivo per x > {r1}; denominatore positivo per x > {r2}.\n"
@@ -1368,7 +1590,7 @@ def lez_10_7(rng, n):
     return out
 
 
-def lez_10_8(rng, n):
+def lez_10_8(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         B = rng.randint(-15, 15)
@@ -1395,7 +1617,7 @@ _CONTEXT_POOL_11_1 = [
 ]
 
 
-def lez_11_1(rng, n):
+def lez_11_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         ctx, tipo = rng.choice(_CONTEXT_POOL_11_1)
@@ -1405,7 +1627,7 @@ def lez_11_1(rng, n):
     return out
 
 
-def lez_11_2(rng, n):
+def lez_11_2(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         data = [rng.randint(1, 6) for _ in range(rng.randint(10, 15))]
@@ -1418,7 +1640,7 @@ def lez_11_2(rng, n):
     return out
 
 
-def lez_11_4(rng, n):
+def lez_11_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         data = [rng.randint(1, 12) for _ in range(rng.randint(8, 13))]
@@ -1430,7 +1652,7 @@ def lez_11_4(rng, n):
     return out
 
 
-def lez_11_5(rng, n):
+def lez_11_5(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         data = [rng.randint(1, 20) for _ in range(rng.randint(6, 10))]
@@ -1458,7 +1680,7 @@ _STATEMENTS_G1_1 = [
 ]
 
 
-def lez_g1_1(rng, n):
+def lez_g1_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         frase, vero = rng.choice(_STATEMENTS_G1_1)
@@ -1471,7 +1693,7 @@ def lez_g1_1(rng, n):
 _POLY_NAMES = {3: "triangolo", 4: "quadrilatero", 5: "pentagono", 6: "esagono", 7: "ettagono", 8: "ottagono"}
 
 
-def lez_g1_2(rng, n):
+def lez_g1_2(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         sides = rng.randint(3, 8)
@@ -1483,7 +1705,7 @@ def lez_g1_2(rng, n):
     return out
 
 
-def lez_g1_3(rng, n):
+def lez_g1_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         sides = rng.randint(4, 10)
@@ -1495,7 +1717,7 @@ def lez_g1_3(rng, n):
     return out
 
 
-def lez_g1_4(rng, n):
+def lez_g1_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         is_segment = rng.choice([True, False])
@@ -1513,7 +1735,7 @@ def lez_g1_4(rng, n):
     return out
 
 
-def lez_g1_5(rng, n):
+def lez_g1_5(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         AB = rng.randint(6, 60)
@@ -1527,7 +1749,7 @@ def lez_g1_5(rng, n):
     return out
 
 
-def lez_g1_6(rng, n):
+def lez_g1_6(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         is_length = rng.choice([True, False])
@@ -1550,7 +1772,7 @@ def lez_g1_6(rng, n):
 
 # ---- Capitolo G2 - Triangoli ----
 
-def lez_g2_1(rng, n):
+def lez_g2_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         choice = rng.choice(["scaleno", "isoscele", "equilatero"])
@@ -1579,7 +1801,7 @@ def lez_g2_1(rng, n):
     return out
 
 
-def lez_g2_2(rng, n):
+def lez_g2_2(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         l1, l2, ang = rng.randint(4, 15), rng.randint(4, 15), rng.randint(20, 150)
@@ -1590,7 +1812,7 @@ def lez_g2_2(rng, n):
     return out
 
 
-def lez_g2_3(rng, n):
+def lez_g2_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         l1, a1, a2 = rng.randint(4, 15), rng.randint(20, 80), rng.randint(20, 80)
@@ -1601,7 +1823,7 @@ def lez_g2_3(rng, n):
     return out
 
 
-def lez_g2_4(rng, n):
+def lez_g2_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         angle = rng.randint(30, 75)
@@ -1613,7 +1835,7 @@ def lez_g2_4(rng, n):
     return out
 
 
-def lez_g2_5(rng, n):
+def lez_g2_5(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         a_, b_, c_ = rng.randint(4, 15), rng.randint(4, 15), rng.randint(4, 15)
@@ -1624,7 +1846,7 @@ def lez_g2_5(rng, n):
     return out
 
 
-def lez_g2_6(rng, n):
+def lez_g2_6(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         a_, b_, c_ = rng.randint(3, 20), rng.randint(3, 20), rng.randint(3, 20)
@@ -1641,7 +1863,7 @@ def lez_g2_6(rng, n):
 
 # ---- Capitolo G3 - Rette perpendicolari e rette parallele ----
 
-def lez_g3_1(rng, n):
+def lez_g3_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         angle = rng.randint(10, 80)
@@ -1653,7 +1875,7 @@ def lez_g3_1(rng, n):
     return out
 
 
-def lez_g3_2(rng, n):
+def lez_g3_2(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         alpha = rng.randint(20, 160)
@@ -1664,7 +1886,7 @@ def lez_g3_2(rng, n):
     return out
 
 
-def lez_g3_3(rng, n):
+def lez_g3_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         alpha = rng.randint(20, 160)
@@ -1675,7 +1897,7 @@ def lez_g3_3(rng, n):
     return out
 
 
-def lez_g3_4(rng, n):
+def lez_g3_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         sides = rng.randint(3, 10)
@@ -1687,7 +1909,7 @@ def lez_g3_4(rng, n):
     return out
 
 
-def lez_g3_5(rng, n):
+def lez_g3_5(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         ipotenusa = rng.randint(8, 20)
@@ -1701,7 +1923,7 @@ def lez_g3_5(rng, n):
 
 # ---- Capitolo G4 - Parallelogrammi e trapezi ----
 
-def lez_g4_1(rng, n):
+def lez_g4_1(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         base, lato, angolo = rng.randint(10, 40), rng.randint(5, 25), rng.randint(30, 150)
@@ -1714,7 +1936,7 @@ def lez_g4_1(rng, n):
     return out
 
 
-def lez_g4_2(rng, n):
+def lez_g4_2(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         choice = rng.choice(["rettangolo", "quadrato", "rombo"])
@@ -1738,7 +1960,7 @@ def lez_g4_2(rng, n):
     return out
 
 
-def lez_g4_3(rng, n):
+def lez_g4_3(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         b1 = rng.randint(20, 60)
@@ -1752,7 +1974,7 @@ def lez_g4_3(rng, n):
     return out
 
 
-def lez_g4_4(rng, n):
+def lez_g4_4(rng, n, detail: int = 2):
     out = []
     for _ in range(n):
         a_, b_, c_ = rng.randint(4, 15), rng.randint(4, 15), rng.randint(4, 15)
@@ -1771,7 +1993,7 @@ def lez_g4_4(rng, n):
 # Registro lezione -> generatore
 # --------------------------------------------------------------------------
 
-LessonGenerator = Callable[[random.Random, int], list[Exercise]]
+LessonGenerator = Callable[[random.Random, int, int], list[Exercise]]
 
 LESSON_GENERATORS: dict[tuple[str, int], LessonGenerator] = {
     ("1", 1): lez_1_1, ("1", 2): lez_1_2, ("1", 3): lez_1_3, ("1", 4): lez_1_4,
@@ -1995,6 +2217,19 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Scrive un file separato per ciascuna lezione selezionata, invece di un unico file con tutte le lezioni scelte (comportamento di default).",
     )
+    parser.add_argument(
+        "--dettaglio",
+        type=int,
+        choices=[1, 2],
+        default=2,
+        help=(
+            "Livello di dettaglio della soluzione: 1 = essenziale (metodo e risultato), "
+            "2 = passo-passo, un'operazione alla volta (default). "
+            "Il livello 2 è pienamente implementato per le lezioni di manipolazione algebrica "
+            "(monomi, polinomi, prodotti notevoli, equazioni, disequazioni, frazioni algebriche, "
+            "divisione tra polinomi); per le altre lezioni i due livelli coincidono."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -2019,7 +2254,7 @@ def main() -> int:
     lesson_exercise_pairs: list[tuple[Lesson, list[Exercise]]] = []
     for lesson in lessons:
         generator = LESSON_GENERATORS[lesson_key(chapter.code, lesson.number)]
-        exercises = generator(rng, args.n)
+        exercises = generator(rng, args.n, args.dettaglio)
         lesson_exercise_pairs.append((lesson, exercises))
 
     generated = write_files(chapter, lesson_exercise_pairs, out_dir, args.per_lezione)
