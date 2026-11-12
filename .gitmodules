@@ -1,0 +1,4 @@
+[submodule "005_authoring_gen"]
+	path = 005_authoring_gen
+	url = git@github.com:enrico200165/005_authoring_gen.git
+	branch = main
